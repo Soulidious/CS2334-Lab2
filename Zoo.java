@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Class to represent a zoo. Holds a list of animals that are present at the zoo.
  * Calculates statistics about these animals.
@@ -48,11 +50,12 @@ public class Zoo
      * @param initialCapacity The initial number of animals that the zoo can hold.
      */
     public Zoo(int initialCapacity) 
-    // FIXME "Zoo constructor is incorrect"
-    // DONE
+    // FIXME "Zoo constructor is incorrectly"
     {
     	Animal[] newZoo = new Animal[initialCapacity];
+    	//System.out.println(Arrays.toString(newZoo));  // test **********
     	this.animals = newZoo;
+    	//System.out.println(Arrays.toString(this.animals));  //test ********
     	this.numAnimals = 0;
     }
     /**
@@ -69,12 +72,16 @@ public class Zoo
     	int initialCapacity = this.animals.length;
     	Animal[] newCapacity = new Animal[initialCapacity * 2];
     	
+    	//System.out.println(Arrays.toString(newCapacity));  // test *********
+    	
     	// Iterate through this.animals and copy to newCapacity
     	for (int initIndex = 0; initIndex < this.animals.length; ++initIndex)
     	{
     		newCapacity[initIndex] = this.animals[initIndex];
     	}
     	this.animals = newCapacity;
+    	
+    	//System.out.println(Arrays.toString(this.animals));  // test *********
     }
 
     /**
@@ -89,14 +96,21 @@ public class Zoo
     	int last = this.animals.length -1;
     	if (!(this.animals[last] == null)) 
     	{
+    		//System.out.println("Expanding Zoo...\n" + "Capacity: " + this.animals.length + ", Number of animals: " + this.numAnimals);//test ****************
     		expandZoo();
+    		//System.out.println("New capacity: " + this.animals.length);//test ****************
     		this.animals[this.numAnimals] = ani;
+    		//System.out.println(Arrays.toString(animals));//test ****************
     		this.numAnimals += 1;
+    		//System.out.println("New addition: " + this.numAnimals + " animals");//test ****************
     	}
     	else
     	{
+    		//System.out.println("Capacity: " + this.animals.length);//test ****************
     		this.animals[this.numAnimals] = ani;
     		this.numAnimals += 1;
+    		//System.out.println("Number of animals in zoo: " + this.numAnimals);//test ******************
+    		//System.out.println(Arrays.toString(animals)); //test *****************
     	}
     }
 
@@ -191,7 +205,10 @@ public class Zoo
     	String inZoo = "These animals are currently present in the zoo: \n";
     	for (int i = 0; i < this.animals.length; ++i)
     	{
-    		inZoo += this.animals[i].toString();
+    		if (this.animals[i] != null)
+    		{
+    			inZoo += this.animals[i].toString();
+    		}
     	}
     	return inZoo;
     }
