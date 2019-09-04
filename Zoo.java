@@ -1,3 +1,4 @@
+
 /**
  * Class to represent a zoo. Holds a list of animals that are present at the zoo.
  * Calculates statistics about these animals.
@@ -5,7 +6,7 @@
  * @author Stephen Thung
  * @version 2018-01-23
  * Modified by Mohammad Mukhtaruzzaman on 2019-08-27
- * Modified by Joseph Lucas on 2019-08-29
+ * Modified by Joseph Lucas on 2019-08-30
  */
 public class Zoo
 {
@@ -48,11 +49,9 @@ public class Zoo
      * @param initialCapacity The initial number of animals that the zoo can hold.
      */
     public Zoo(int initialCapacity) 
-    // FIXME "Zoo constructor is incorrect"
-    // DONE
     {
-    	Animal[] newZoo = new Animal[initialCapacity];
-    	this.animals = newZoo;
+    	this.capacity = initialCapacity;
+    	this.animals = new Animal[initialCapacity];
     	this.numAnimals = 0;
     }
     /**
@@ -63,11 +62,10 @@ public class Zoo
      * array, and update the reference of the "animals" array to the new array.
      */
     private void expandZoo()
-    // FIXME: "animals array not expanded correctly. Capacity may also not be updated correctly."
-    // 
+    // FIXME: java.lang.ArrayIndexOutOfBoundsException: 4
     {
-    	int initialCapacity = this.animals.length;
-    	Animal[] newCapacity = new Animal[initialCapacity * 2];
+    	Animal[] newCapacity = new Animal[this.animals.length * 2];
+    	this.capacity = capacity * 2;
     	
     	// Iterate through this.animals and copy to newCapacity
     	for (int initIndex = 0; initIndex < this.animals.length; ++initIndex)
@@ -84,7 +82,6 @@ public class Zoo
      * @param ani The animal to be added to the zoo.
      */
     public void addAnimal(Animal ani)
-    // FIXME: "Zoo adds animals incorrectly"
     {
     	int last = this.animals.length -1;
     	if (!(this.animals[last] == null)) 
@@ -191,7 +188,10 @@ public class Zoo
     	String inZoo = "These animals are currently present in the zoo: \n";
     	for (int i = 0; i < this.animals.length; ++i)
     	{
-    		inZoo += this.animals[i].toString();
+    		if (this.animals[i] != null)
+    		{
+    			inZoo += this.animals[i].toString();
+    		}
     	}
     	return inZoo;
     }

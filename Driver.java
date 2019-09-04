@@ -5,7 +5,7 @@
  * @author Stephen Thung
  * @version 2018-01-23
  * Modified by Mohammad Mukhtaruzzaman on 2019-08-27
- * Modified by Joseph Lucas on 2019-08-29
+ * Modified by Joseph Lucas on 2019-08-30
  */
 public class Driver
 {
@@ -25,19 +25,12 @@ public class Driver
         Animal b = new Animal("Green", "Lion", 220.5, 25.0);
 
         // Create a zoo and add animals to it:
- //       Zoo zoo = new Zoo(1);
- //       zoo.addAnimal(a); // Gorilla
- //       zoo.addAnimal(b); // Tiger
-
+        Zoo zoo = new Zoo(1);
+        zoo.addAnimal(a); // Tiger
+        zoo.addAnimal(b); // Lion
+        
         // Print out info about the zoo:
- //       System.out.println(zoo);
-    	Zoo zoo = new Zoo(3);
-    	zoo.addAnimal(a);
-    	zoo.addAnimal(b);
-    	zoo.addAnimal(a);
-    	System.out.println(zoo);
-    	System.out.println("*");
-    	zoo.addAnimal(b);
-    	System.out.println(zoo);
+        System.out.println(zoo);
+          
     }
 }
